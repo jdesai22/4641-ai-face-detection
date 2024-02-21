@@ -52,169 +52,71 @@
     </header>
 
     <main id="content" class="main-content" role="main">
-      <p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>.</p>
+      <h1 id="ai-face-detection-project-proposal">AI Face Detection Project Proposal</h1>
 
-<p><a href="./another-page.html">Link to another page</a>.</p>
-
-<p>There should be whitespace between paragraphs.</p>
-
-<p>There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.</p>
-
-<h1 id="header-1">Header 1</h1>
-
-<p>This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.</p>
-
-<h2 id="header-2">Header 2</h2>
-
-<blockquote>
-  <p>This is a blockquote following a header.</p>
-
-  <p>When something is important enough, you do it even if the odds are not in your favor.</p>
-</blockquote>
-
-<h3 id="header-3">Header 3</h3>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Javascript code with syntax highlighting.</span>
-<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="nf">lang</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">dateformat</span><span class="p">.</span><span class="nx">i18n</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./lang/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">l</span><span class="p">)</span>
-  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby code with syntax highlighting</span>
-<span class="no">GitHubPages</span><span class="o">::</span><span class="no">Dependencies</span><span class="p">.</span><span class="nf">gems</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">gem</span><span class="p">,</span> <span class="n">version</span><span class="o">|</span>
-  <span class="n">s</span><span class="p">.</span><span class="nf">add_dependency</span><span class="p">(</span><span class="n">gem</span><span class="p">,</span> <span class="s2">"= </span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<h4 id="header-4">Header 4</h4>
-
-<ul>
-  <li>This is an unordered list following a header.</li>
-  <li>This is an unordered list following a header.</li>
-  <li>This is an unordered list following a header.</li>
-</ul>
-
-<h5 id="header-5">Header 5</h5>
+<h2 id="introductionbackground">Introduction/Background</h2>
 
 <ol>
-  <li>This is an ordered list following a header.</li>
-  <li>This is an ordered list following a header.</li>
-  <li>This is an ordered list following a header.</li>
+  <li>Literature Review</li>
+  <li>Dataset description: dataset consisting of images of both real and AI-generated/fake faces, preferably labeled as being “real” or “fake”</li>
+  <li>Dataset link: https://www.kaggle.com/datasets/ciplab/real-and-fake-face-detection</li>
 </ol>
 
-<h6 id="header-6">Header 6</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">head1</th>
-      <th style="text-align: left">head two</th>
-      <th style="text-align: left">three</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">ok</td>
-      <td style="text-align: left">good swedish fish</td>
-      <td style="text-align: left">nice</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">out of stock</td>
-      <td style="text-align: left">good and plenty</td>
-      <td style="text-align: left">nice</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">ok</td>
-      <td style="text-align: left">good <code class="language-plaintext highlighter-rouge">oreos</code></td>
-      <td style="text-align: left">hmm</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">ok</td>
-      <td style="text-align: left">good <code class="language-plaintext highlighter-rouge">zoute</code> drop</td>
-      <td style="text-align: left">yumm</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="theres-a-horizontal-rule-below-this">There’s a horizontal rule below this.</h3>
-
-<hr />
-
-<h3 id="here-is-an-unordered-list">Here is an unordered list:</h3>
+<h2 id="problem-defintion">Problem Defintion</h2>
 
 <ul>
-  <li>Item foo</li>
-  <li>Item bar</li>
-  <li>Item baz</li>
-  <li>Item zip</li>
+  <li>Problem: With rapidly evolving AI, detection between real and fake content is an increasing problem. Image generation AIs like DallE, Midjourney, DreamStudio, and SORA can create very realistic human faces. At this pace, they will be able to generate images of people that are indistinguishable from real photographs or portraits.</li>
+  <li>Motivation: We want to train an AI that will be able to classify images as real or AI-generated. This can be an effective countermeasure against the problem of fake images since an algorithm can pick up on the smallest of patterns or differences in the images.</li>
 </ul>
 
-<h3 id="and-an-ordered-list">And an ordered list:</h3>
+<h2 id="methods">Methods</h2>
+
+<h4 id="data-preprocessing">Data Preprocessing</h4>
 
 <ol>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-  <li>Item four</li>
+  <li>Adding random noise to images - helps prevent our model from overfitting; also helps improve our model’s accuracy</li>
+  <li>Grayscale images - makes the images we use less complex to run algorithms on; also results in higher accuracy for image classification when compared to RGB/colored pictures. Our model will also most likely be judging whether a face is real or not based off its facial features, not necessarily color</li>
+  <li>Histogram of oriented gradients - lets us not only detect edges in each image, but also lets us determine the direction of each edge in the image by extracting</li>
 </ol>
 
-<h3 id="and-a-nested-list">And a nested list:</h3>
+<h4 id="ml-algorithms">ML Algorithms</h4>
+
+<ol>
+  <li>Support Vector Machine - supervised algorithm well-suited to handling data with a high dimensionality, also good for complex datasets</li>
+  <li>k-NN - good supervised binary classification algorithm that can group several images based on their similarities</li>
+  <li>k-Means - unsupervised algorithm that is simple, efficient, and easy to understand that can be used for image classification</li>
+</ol>
+
+<h2 id="results-and-discussion">Results and Discussion</h2>
 
 <ul>
-  <li>level 1 item
+  <li>Quantitative Metrics:
     <ul>
-      <li>level 2 item</li>
-      <li>level 2 item
-        <ul>
-          <li>level 3 item</li>
-          <li>level 3 item</li>
-        </ul>
-      </li>
+      <li>Accuracy</li>
+      <li>F1-score</li>
+      <li>AUC (Area Under the ROC Curve)</li>
     </ul>
   </li>
-  <li>level 1 item
+  <li>Project Goals:
     <ul>
-      <li>level 2 item</li>
-      <li>level 2 item</li>
-      <li>level 2 item</li>
+      <li>Accuracy of 70%</li>
+      <li>F1-score of 0.75</li>
+      <li>AUC of 0.80</li>
     </ul>
   </li>
-  <li>level 1 item
+  <li>Expected Results:
     <ul>
-      <li>level 2 item</li>
-      <li>level 2 item</li>
+      <li>Accuracy of 60%</li>
+      <li>F1-score of 0.60</li>
+      <li>AUC of 0.70</li>
     </ul>
   </li>
-  <li>level 1 item</li>
 </ul>
 
-<h3 id="small-image">Small image</h3>
+<p>Due to the sensitive nature of the data, it will be important to minimize False Positives, where our model might classify an AI-generated image as a real one. This should take priority to maintain our model’s trust and ethical implications of passing a fake image as real. We will be able to explore this in our results using a Confusion Matrix.</p>
 
-<p><img src="https://github.githubassets.com/images/icons/emoji/octocat.png" alt="Octocat" /></p>
+<h2 id="references">References</h2>
 
-<h3 id="large-image">Large image</h3>
-
-<p><img src="https://guides.github.com/activities/hello-world/branching.png" alt="Branching" /></p>
-
-<h3 id="definition-lists-can-be-used-with-html-syntax">Definition lists can be used with HTML syntax.</h3>
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The final element.
-</code></pre></div></div>
 
 
       <footer class="site-footer">
