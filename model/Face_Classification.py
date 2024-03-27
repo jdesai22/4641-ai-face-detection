@@ -2,6 +2,7 @@ import numpy as np
 from sklearn import svm, metrics, datasets
 from skimage import io, feature, filters, exposure, color
 from skimage.io import imread_collection
+from skimage.transform import resize
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split, cross_validate
 import re, math
@@ -13,7 +14,7 @@ import matplotlib.pyplot as plt
 def main():
     model = Image_Classification_Model()
 
-    (raw_images, raw_labels) = model.load_data(r'face_images/') # insert directory here 
+    (raw_images, raw_labels) = model.load_data(r'model/face_images/') # insert directory here 
     train_raw, test_raw, train_labels, test_labels = train_test_split(raw_images, raw_labels, test_size=0.20, random_state=42)
 
     train_data = model.feature_extraction(train_raw)
@@ -50,7 +51,7 @@ class Image_Classification_Model:
         # stores the current classifier being used
         self.classifier = None
     
-    # # helper method to read images 
+    # helper method to read images 
     def imread_convert(self, f):
         # taken from https://scikit-image.org/docs/stable/api/skimage.io.html 
         return io.imread(f).astype(np.uint8)
@@ -61,6 +62,9 @@ class Image_Classification_Model:
         labels = []
         files = [f for f in listdir(dir) if isfile(join(dir, f))]
         data = io.ImageCollection(dir + '*.jpg', load_func=self.imread_convert)
+        # for i in range(len(data)):
+        #     if data[i].shape != (300, 300):
+        #         image = resize(data[i], (300, 300))
         data = io.concatenate_images(data)
         for image in files:
             label = image.split('_')[0]
