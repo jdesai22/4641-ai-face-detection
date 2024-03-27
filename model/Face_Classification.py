@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 def main():
     model = Image_Classification_Model()
 
-    (raw_images, raw_labels) = model.load_data(r'face_images/') # insert directory here 
+    (raw_images, raw_labels) = model.load_data(r'model/face_images/') # insert directory here 
     train_raw, test_raw, train_labels, test_labels = train_test_split(raw_images, raw_labels, test_size=0.20, random_state=42)
 
     train_data = model.feature_extraction(train_raw)
     test_data = model.feature_extraction(test_raw)
 
-    pca = PCA(n_components=0.85, svd_solver='full')
+    pca = PCA(n_components=0.75, svd_solver='full')
     pca.fit(train_data)
     train_data = pca.transform(train_data)
     test_data = pca.transform(test_data)
@@ -42,7 +42,11 @@ def main():
     print("Accuracy: ", metrics.accuracy_score(test_labels, predicted_labels))
     print("F1 score: ", metrics.f1_score(test_labels, predicted_labels, average='micro'))
 
-
+    plt.plot(np.cumsum(pca.explained_variance_ratio_))
+    plt.xlabel("Number of Components")
+    plt.ylabel("Data Representation (Proportion)")
+    plt.title("Components vs Data Representation")
+    plt.show()
 
 # TODO: add separate pre-processing method?
 class Image_Classification_Model:
@@ -67,6 +71,7 @@ class Image_Classification_Model:
             if label == "easy" or label == "mid" or label == "hard":
                 label = "fake"
             labels.append(label)
+        print(set(labels))
         return (data, labels)
 
     
